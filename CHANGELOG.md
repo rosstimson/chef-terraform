@@ -2,6 +2,6 @@ terraform Cookbook CHANGELOG
 ============================
 
 
-0.0.1
+0.1.0
 -----
-- [Ross Timson] - Initial repo / placeholder to keep Stove happy.
+- [Ross Timson] - Initial release.
