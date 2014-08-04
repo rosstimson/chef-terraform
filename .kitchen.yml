@@ -1,0 +1,33 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos-6.5
+  - name: centos-7.0
+  - name: debian-7.6
+  - name: fedora-20
+  - name: freebsd-10.0
+  - name: ubuntu-14.04
+  - name: amazon-2014.03.2-hvm
+    driver:
+      name: ec2
+      image_id: ami-892fe1fe
+      region: eu-west-1
+      availability_zone: eu-west-1a
+      security_group_ids: sg-5ba57b3e
+      subnet_id: subnet-b2a87ad7
+      flavor_id: t2.micro
+      username: ec2-user
+      aws_access_key_id: <%= ENV['TK_AWS_ACCESS_KEY_ID'] %>
+      aws_secret_access_key: <%= ENV['TK_AWS_SECRET_ACCESS_KEY'] %>
+      aws_ssh_key_id: <%= ENV['TK_AWS_SSH_KEY_ID'] %>
+      ssh_key: <%= File.expand_path('~/.ssh/tk-rosstimson-aws.pem') %>
+
+suites:
+  - name: default
+    run_list: recipe[terraform::default]
+    attributes:
