@@ -11,7 +11,7 @@ node.default['terraform']['raw_checksums'] = <<-EOF
   ab7393f86fad7f870d398aed6984c88001b7cc36366973489cf46701dc90cf3e 0.1.0_windows_386.zip
 EOF
 node.default['terraform']['checksums'] = Hash[
-  node['terraform']['raw_checksums'].split("\n").collect { |s| s.split.reverse }
+  node['terraform']['raw_checksums'].split("\n").map { |s| s.split.reverse }
 ]
 filename = "#{node['terraform']['version']}_#{node['os']}_#{node['terraform']['arch']}.zip"
 node.default['terraform']['checksum'] = node['terraform']['checksums'][filename]
