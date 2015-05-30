@@ -1,5 +1,8 @@
 # Encoding: utf-8
 require 'bundler/setup'
+require 'stove/rake_task'
+
+Stove::RakeTask.new
 
 namespace :style do
   require 'rubocop/rake_task'

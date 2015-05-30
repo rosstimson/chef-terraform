@@ -9,6 +9,6 @@ version          '0.1.2'
 
 depends          'ark'
 
-%w( amazon centos debian fedora ubuntu ).each do |os|
+%w( centos debian fedora ubuntu ).each do |os|
   supports os
 end
