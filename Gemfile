@@ -1,30 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf', '> 3'
-
-# Uncomment these lines if you want to live on the Edge:
-#
-# group :development do
-#   gem "berkshelf", github: "berkshelf/berkshelf"
-#   gem "vagrant", github: "mitchellh/vagrant", tag: "v1.6.3"
-# end
-#
-# group :plugins do
-#   gem "vagrant-berkshelf", github: "berkshelf/vagrant-berkshelf"
-#   gem "vagrant-omnibus", github: "schisamo/vagrant-omnibus"
-# end
-
-gem 'chef', '>= 11.8'
-gem 'rake', '>= 10.2'
-gem 'rubocop', '= 0.23'
+gem 'berkshelf', '~> 3.2'
+gem 'chef', '~> 12.3'
+gem 'rake'
+gem 'rubocop'
 gem 'foodcritic', '>= 3.0'
-gem 'chefspec', '>= 3.4'
-gem 'serverspec', '>= 1.6'
-gem 'test-kitchen'
-gem 'kitchen-vagrant'
-gem 'kitchen-ec2'
-gem 'unf' #Stop Fog (used by kitchen-ec2) complaining.
-gem 'guard', '>= 2.6'
-gem 'guard-rubocop', '>= 1.1'
-gem 'guard-foodcritic', '>= 1.0.2'
+gem 'chefspec', '~> 4.2'
 gem 'stove'
+
+group :integration do
+  gem 'test-kitchen', '~> 1.4'
+  gem 'kitchen-vagrant'
+  gem 'serverspec'
+end
