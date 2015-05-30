@@ -27,6 +27,7 @@ ark 'terraform' do
   has_binaries ['terraform']
   append_env_path false
   strip_leading_dir false
+  strip_components 0
 
   action :install
 end
