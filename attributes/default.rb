@@ -2,6 +2,12 @@ node.default['terraform']['url_base'] = 'https://dl.bintray.com/mitchellh/terraf
 node.default['terraform']['version'] = '0.5.1'
 node.default['terraform']['arch'] = kernel['machine'] =~ /x86_64/ ? 'amd64' : '386'
 
+# Windows attribute
+if platform_family?('windows')
+  node.default['terraform']['win_install_dir'] = 'C:\terraform'
+  node.default['terraform']['owner'] = 'Administrator'
+end
+
 # Transform raw output of the bintray checksum list into a Hash[filename, checksum].
 # https://dl.bintray.com/mitchellh/terraform/${VERSION}_SHA256SUMS?direct
 node.default['terraform']['raw_checksums'] = <<-EOF
