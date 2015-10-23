@@ -36,3 +36,10 @@ ark 'terraform' do
 
   action :install
 end
+
+# update path
+if platform_family?('windows')
+   windows_path node['terraform']['win_install_dir'] do
+     action :add
+   end
+end
