@@ -7,7 +7,7 @@ describe 'terraform::default' do
     its(:exit_status) { should eq 0 }
     # Discrepancy in version due to a known Terraform issue:
     # https://github.com/hashicorp/terraform/issues/2067
-    its(:stdout) { should match /Terraform v0.5.2/ }
+    its(:stdout) { should match(/Terraform v0\.5\.2/) }
   end
 
   describe file('/usr/local/terraform-0.5.1') do
