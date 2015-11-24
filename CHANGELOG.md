@@ -5,6 +5,7 @@ terraform Cookbook CHANGELOG
 -----
 - Fixed Issue #6(https://github.com/rosstimson/chef-terraform/issues/6)
   set the terraform zip file name in a node attribute
+- updated the default version to 0.6.7
 
 0.1.2
 -----
