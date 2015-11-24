@@ -3,7 +3,8 @@ terraform Cookbook CHANGELOG
 
 0.1.3
 -----
-- set the terraform zip file name in a node attribute
+- Fixed Issue #6(https://github.com/rosstimson/chef-terraform/issues/6)
+  set the terraform zip file name in a node attribute
 
 0.1.2
 -----
