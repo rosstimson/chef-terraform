@@ -21,7 +21,7 @@
 include_recipe 'ark'
 
 ark 'terraform' do
-  url "#{node['terraform']['url_base']}/terraform_#{node['terraform']['version']}_#{node['os']}_#{node['terraform']['arch']}.zip" # rubocop:disable LineLength
+  url "#{node['terraform']['url_base']}/#{node['terraform']['zipfile']}"
   version node['terraform']['version']
   checksum node['terraform']['checksum']
   has_binaries ['terraform']
