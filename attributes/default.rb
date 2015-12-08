@@ -4,6 +4,12 @@ default['terraform']['arch'] = kernel['machine'] =~ /x86_64/ ? 'amd64' : '386'
 default['terraform']['zipfile'] = "terraform_#{node['terraform']['version']}_" \
   "#{node['os']}_#{node['terraform']['arch']}.zip"
 
+# Windows attribute
+if platform_family?('windows')
+  default['terraform']['win_install_dir'] = 'C:\terraform'
+  default['terraform']['owner'] = 'Administrator'
+end
+
 # Transform raw output of the checksum list into a Hash[filename, checksum].
 # https://releases.hashicorp.com/terraform/0.6.8/terraform_0.6.8_SHA256SUMS
 # rubocop:disable LineLength
@@ -21,7 +27,6 @@ default['terraform']['raw_checksums'] = <<-EOF
   4a2fbb7b5dd7ad6400f853f24db2860cafefdf319c87d559355121cd180739d4  terraform_0.6.8_windows_386.zip
   357dd1df7443fa1078747e123dd56abba793ebe47b3670556fb11a2547ad6750  terraform_0.6.8_windows_amd64.zip
 EOF
-# rubocop:enable LineLength
 
 default['terraform']['checksums'] = Hash[
   node['terraform']['raw_checksums'].split("\n").map { |s| s.split.reverse }
