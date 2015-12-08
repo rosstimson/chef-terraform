@@ -29,5 +29,17 @@ ark 'terraform' do
   strip_leading_dir false
   strip_components 0
 
+  if platform_family?('windows')
+  	win_install_dir node['terraform']['win_install_dir']
+  	owner node['terraform']['owner']
+  end
+
   action :install
+end
+
+# update path
+if platform_family?('windows')
+   windows_path node['terraform']['win_install_dir'] do
+     action :add
+   end
 end
