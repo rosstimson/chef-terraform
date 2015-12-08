@@ -1,11 +1,13 @@
 terraform Cookbook CHANGELOG
 ============================
 
-0.1.3
+0.2.0
 -----
 - Fixed Issue #6(https://github.com/rosstimson/chef-terraform/issues/6)
-  set the terraform zip file name in a node attribute
-- updated the default version to 0.6.7
+  set the terraform zip file name in a node attribute (@haidangwa)
+- Updated the default version to 0.6.8
+- Fixed the download link as no longer using Bintray
+- Windows support (@ridiculousness)
 
 0.1.2
 -----
