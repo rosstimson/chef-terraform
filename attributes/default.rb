@@ -1,5 +1,5 @@
 default['terraform']['url_base'] = 'https://releases.hashicorp.com/terraform'
-default['terraform']['version'] = '0.6.8'
+default['terraform']['version'] = '0.6.11'
 default['terraform']['arch'] = kernel['machine'] =~ /x86_64/ ? 'amd64' : '386'
 default['terraform']['zipfile'] = "terraform_#{node['terraform']['version']}_" \
   "#{node['os']}_#{node['terraform']['arch']}.zip"
@@ -14,18 +14,19 @@ end
 # https://releases.hashicorp.com/terraform/0.6.8/terraform_0.6.8_SHA256SUMS
 # rubocop:disable LineLength
 default['terraform']['raw_checksums'] = <<-EOF
-  74f9370b3464a64b7e080913375f3eb2b3510f072e1725d59a487a4468eb4179  terraform_0.6.8_darwin_386.zip
-  71fd8ff20f657a4c7d82794756d55c55b0686516a8253356b8edd1a728230577  terraform_0.6.8_darwin_amd64.zip
-  076ecb40dca75e9df78b2c99f363b45c6c52d61408e7824922fe090a748e0f76  terraform_0.6.8_freebsd_386.zip
-  783f176a631b51ba7a39a534d554397a30d28a3873367dd31fe827911f14c7bd  terraform_0.6.8_freebsd_amd64.zip
-  9679549e15bbd5c95b530498193de2db66552402efe450d44cb7c9984c9203c4  terraform_0.6.8_freebsd_arm.zip
-  5260aba337b536e2dbee57f7df02b4b41dc3cb4610d8603590ae2d6ae5eec59b  terraform_0.6.8_linux_386.zip
-  fd61718820c3f2334276517a89694cebe82db354b584ea90c376f1c6d34bb92d  terraform_0.6.8_linux_amd64.zip
-  06ba5d99776d5bc1accce7817da4f0093a1871dba56cb0d797b962f919814904  terraform_0.6.8_linux_arm.zip
-  dfbba500dfd628efd889bd11b58b09b9fd78e7c2a9351200d36f865688dddfc0  terraform_0.6.8_openbsd_386.zip
-  6521d4123dbde3a96dc954f06bdc936811607daaa60badbd039a45bc87bcdc49  terraform_0.6.8_openbsd_amd64.zip
-  4a2fbb7b5dd7ad6400f853f24db2860cafefdf319c87d559355121cd180739d4  terraform_0.6.8_windows_386.zip
-  357dd1df7443fa1078747e123dd56abba793ebe47b3670556fb11a2547ad6750  terraform_0.6.8_windows_amd64.zip
+  cef10c71b7337cfe85c895a0a42d4f512c99f7944a06102b578f73aba32b45a7  terraform_0.6.11_darwin_386.zip
+  9802b1d56576bea86e34fd3800e100eb043ab6de5a5fa40f7f05a0a44f364dd2  terraform_0.6.11_darwin_amd64.zip
+  2eb8079176fd173803e06159c1901707b00045dff4e5ea175166bcc957726733  terraform_0.6.11_freebsd_386.zip
+  a8d28c82dfa9e0f6503b6c2a840d8e373f9cf54437db08d935be92152719ba07  terraform_0.6.11_freebsd_amd64.zip
+  2806bbadfe70139f60beeda381b2976f75ce8682eaef294b77fcbeeb332e2d02  terraform_0.6.11_freebsd_arm.zip
+  8b3bf0e1ac3180f3846abea9bfb3a30eb098460f7923989b5eb4bb8cd4ae80fc  terraform_0.6.11_linux_386.zip
+  f451411db521fc4d22c9fe0c80105cf028eb8df0639bac7c1e781880353d9a5f  terraform_0.6.11_linux_amd64.zip
+  7a906ea4137f590afd650aae4bc121e52ae40d5a7f7e57a2ba5c0c3bd316768c  terraform_0.6.11_linux_arm.zip
+  9f04586b066c7a3496e07aaafb1dd1bb470e049ad812657f1c1c59259be69a93  terraform_0.6.11_openbsd_386.zip
+  a57fbcff72ad17c3261b272b4fc9ae15e059ff186d4aa9064ada43613ada3f23  terraform_0.6.11_openbsd_amd64.zip
+  0738fad4fc55d0120d4bc0ff47fb57a45376a45cf7d8f939c03e5becb97f30cd  terraform_0.6.11_solaris_amd64.zip
+  8564488b4a8e8e40d37c63424006315b89c13096357411a21ce84f26ec92767f  terraform_0.6.11_windows_386.zip
+  4832e6ca2b60bb3d08ef69497bc11890d3e986f0ce76d20bed1a2e9520fc93ba  terraform_0.6.11_windows_amd64.zip
 EOF
 
 default['terraform']['checksums'] = Hash[
