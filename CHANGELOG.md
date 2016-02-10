@@ -1,6 +1,11 @@
 terraform Cookbook CHANGELOG
 ============================
 
+0.2.2
+-----
+- Fixed rubocop offenses
+- updated serverspec to test against Terraform 0.6.11 install paths
+
 0.2.1
 -----
 - Buump Terraform to latest version (0.6.11) (@thegreenrobot)
