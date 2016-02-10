@@ -1,10 +1,12 @@
 terraform Cookbook CHANGELOG
 ============================
 
-0.2.2
+0.3.0
 -----
 - Fixed rubocop offenses
 - updated serverspec to test against Terraform 0.6.11 install paths
+- Added minitest handler dependency for Test Kitchen runs
+- Added minitest test suites
 
 0.2.1
 -----
