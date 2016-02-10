@@ -21,7 +21,8 @@
 include_recipe 'ark'
 
 ark 'terraform' do
-  url "#{node['terraform']['url_base']}/#{node['terraform']['version']}/#{node['terraform']['zipfile']}"
+  url "#{node['terraform']['url_base']}/#{node['terraform']['version']}/" \
+    "#{node['terraform']['zipfile']}"
   version node['terraform']['version']
   checksum node['terraform']['checksum']
   has_binaries ['terraform']
@@ -30,8 +31,8 @@ ark 'terraform' do
   strip_components 0
 
   if platform_family?('windows')
-  	win_install_dir node['terraform']['win_install_dir']
-  	owner node['terraform']['owner']
+    win_install_dir node['terraform']['win_install_dir']
+    owner node['terraform']['owner']
   end
 
   action :install
@@ -39,7 +40,7 @@ end
 
 # update path
 if platform_family?('windows')
-   windows_path node['terraform']['win_install_dir'] do
-     action :add
-   end
+  windows_path node['terraform']['win_install_dir'] do
+    action :add
+  end
 end
