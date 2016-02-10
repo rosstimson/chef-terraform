@@ -1,6 +1,10 @@
 terraform Cookbook CHANGELOG
 ============================
 
+0.2.1
+-----
+- Buump Terraform to latest version (0.6.11) (@thegreenrobot)
+
 0.2.0
 -----
 - Fixed Issue #6(https://github.com/rosstimson/chef-terraform/issues/6)
