@@ -10,7 +10,7 @@ describe 'terraform::default' do
     its(:stdout) { should match(/Terraform v0\.6\.11/) }
   end
 
-  describe file('/usr/local/terraform-0.6.8') do
+  describe file('/usr/local/terraform-0.6.11') do
     it { should be_owned_by 'root' }
   end
 
