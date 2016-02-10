@@ -1,27 +1,33 @@
-default['terraform']['url_base'] = 'https://dl.bintray.com/mitchellh/terraform'
-default['terraform']['version'] = '0.6.7'
+default['terraform']['url_base'] = 'https://releases.hashicorp.com/terraform'
+default['terraform']['version'] = '0.6.11'
 default['terraform']['arch'] = kernel['machine'] =~ /x86_64/ ? 'amd64' : '386'
 default['terraform']['zipfile'] = "terraform_#{node['terraform']['version']}_" \
   "#{node['os']}_#{node['terraform']['arch']}.zip"
 
-# Transform raw output of the bintray checksum list into a Hash[filename, checksum].
-# https://dl.bintray.com/mitchellh/terraform/${VERSION}_SHA256SUMS?direct
+# Windows attribute
+if platform_family?('windows')
+  default['terraform']['win_install_dir'] = 'C:\terraform'
+  default['terraform']['owner'] = 'Administrator'
+end
+
+# Transform raw output of the checksum list into a Hash[filename, checksum].
+# https://releases.hashicorp.com/terraform/0.6.11/terraform_0.6.11_SHA256SUMS
 # rubocop:disable LineLength
 default['terraform']['raw_checksums'] = <<-EOF
-  fb7cf062b856e0ded770fd11856113568155954aa37ec46dfa854131b9ff7d0b  terraform_0.6.7_darwin_386.zip
-  fe54fa09af11a1375a2b85912fe416d494a52137be7c5b0b4aaae35d75b0d588  terraform_0.6.7_darwin_amd64.zip
-  5862129c4922e34b1672bc0dd7b088ce6091a616171aa7ba51e0714faea8549b  terraform_0.6.7_freebsd_386.zip
-  2268c6dfca0c04618ba70e2db2da989d5adac3b7d1a3873e260ec512b20e2ee7  terraform_0.6.7_freebsd_amd64.zip
-  712a8d65869c0eaf127d89823d03d3f217c54909f62bfd5fb829e6284170e09e  terraform_0.6.7_freebsd_arm.zip
-  c12b89c42af88cebdfcfa00d8482e3c9b2ee09d419c09859423503f35def071a  terraform_0.6.7_linux_386.zip
-  2e5de08f545e117eb9825b697c5ad290ee3fdcaae7d6de4b0e99830e58b38b2e  terraform_0.6.7_linux_amd64.zip
-  e16349208eb372330aac5045739653fbbf371dc01ec16b85d064caeabbe1bb01  terraform_0.6.7_linux_arm.zip
-  55eca01309e816796e34792c8eea9c0a08f3caa3b1d5034ecf1738d37ee34f2f  terraform_0.6.7_openbsd_386.zip
-  1472437b677c08d24b1c325f69ef449bfbecd39906082a38039fada0ee4ee00c  terraform_0.6.7_openbsd_amd64.zip
-  abf7bd57f143b2de902e4230980414c48fe96e0c2fcbad0fd91aeb2c98a0dbb8  terraform_0.6.7_windows_386.zip
-  1447b66c032f71fc71014342f37e839a991ba796cfde77e74f62903bfef225c1  terraform_0.6.7_windows_amd64.zip
+  cef10c71b7337cfe85c895a0a42d4f512c99f7944a06102b578f73aba32b45a7  terraform_0.6.11_darwin_386.zip
+  9802b1d56576bea86e34fd3800e100eb043ab6de5a5fa40f7f05a0a44f364dd2  terraform_0.6.11_darwin_amd64.zip
+  2eb8079176fd173803e06159c1901707b00045dff4e5ea175166bcc957726733  terraform_0.6.11_freebsd_386.zip
+  a8d28c82dfa9e0f6503b6c2a840d8e373f9cf54437db08d935be92152719ba07  terraform_0.6.11_freebsd_amd64.zip
+  2806bbadfe70139f60beeda381b2976f75ce8682eaef294b77fcbeeb332e2d02  terraform_0.6.11_freebsd_arm.zip
+  8b3bf0e1ac3180f3846abea9bfb3a30eb098460f7923989b5eb4bb8cd4ae80fc  terraform_0.6.11_linux_386.zip
+  f451411db521fc4d22c9fe0c80105cf028eb8df0639bac7c1e781880353d9a5f  terraform_0.6.11_linux_amd64.zip
+  7a906ea4137f590afd650aae4bc121e52ae40d5a7f7e57a2ba5c0c3bd316768c  terraform_0.6.11_linux_arm.zip
+  9f04586b066c7a3496e07aaafb1dd1bb470e049ad812657f1c1c59259be69a93  terraform_0.6.11_openbsd_386.zip
+  a57fbcff72ad17c3261b272b4fc9ae15e059ff186d4aa9064ada43613ada3f23  terraform_0.6.11_openbsd_amd64.zip
+  0738fad4fc55d0120d4bc0ff47fb57a45376a45cf7d8f939c03e5becb97f30cd  terraform_0.6.11_solaris_amd64.zip
+  8564488b4a8e8e40d37c63424006315b89c13096357411a21ce84f26ec92767f  terraform_0.6.11_windows_386.zip
+  4832e6ca2b60bb3d08ef69497bc11890d3e986f0ce76d20bed1a2e9520fc93ba  terraform_0.6.11_windows_amd64.zip
 EOF
-# rubocop:enable LineLength
 
 default['terraform']['checksums'] = Hash[
   node['terraform']['raw_checksums'].split("\n").map { |s| s.split.reverse }

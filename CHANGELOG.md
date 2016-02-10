@@ -1,6 +1,18 @@
 terraform Cookbook CHANGELOG
 ============================
 
+0.2.1
+-----
+- Buump Terraform to latest version (0.6.11) (@thegreenrobot)
+
+0.2.0
+-----
+- Fixed Issue #6(https://github.com/rosstimson/chef-terraform/issues/6)
+  set the terraform zip file name in a node attribute (@haidangwa)
+- Updated the default version to 0.6.8
+- Fixed the download link as no longer using Bintray
+- Windows support (@ridiculousness)
+
 0.1.3
 -----
 - Fixed Issue #6(https://github.com/rosstimson/chef-terraform/issues/6)
