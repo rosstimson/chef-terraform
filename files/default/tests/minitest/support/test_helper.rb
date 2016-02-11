@@ -9,13 +9,10 @@ require 'minitest-chef-handler'
 module ChefTerraform
   # test helper module under chef-terraform
   module TestHelper
-  # This module is intended to be included form test cases to help reduce
-  # duplication of includes
-  module Helper
+    # This module is intended to be included form test cases to help reduce
+    # duplication of includes
     include MiniTest::Chef::Assertions
     include MiniTest::Chef::Context
     include MiniTest::Chef::Resources
-    MiniTest::Chef::Resources.register_resource(:package)
-    MiniTest::Chef::Resources.register_resource(:chef_gem)
   end
 end
