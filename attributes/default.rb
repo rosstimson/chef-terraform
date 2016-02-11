@@ -12,7 +12,6 @@ end
 
 # Transform raw output of the checksum list into a Hash[filename, checksum].
 # https://releases.hashicorp.com/terraform/0.6.11/terraform_0.6.11_SHA256SUMS
-# rubocop:disable LineLength
 default['terraform']['raw_checksums'] = <<-EOF
   cef10c71b7337cfe85c895a0a42d4f512c99f7944a06102b578f73aba32b45a7  terraform_0.6.11_darwin_386.zip
   9802b1d56576bea86e34fd3800e100eb043ab6de5a5fa40f7f05a0a44f364dd2  terraform_0.6.11_darwin_amd64.zip
