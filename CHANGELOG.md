@@ -7,6 +7,7 @@ terraform Cookbook CHANGELOG
 - updated serverspec to test against Terraform 0.6.11 install paths
 - Added minitest handler dependency for Test Kitchen runs
 - Added minitest test suites
+- Fixed Issue #11(https://github.com/rosstimson/chef-terraform/issues/11)
 
 0.2.1
 -----
