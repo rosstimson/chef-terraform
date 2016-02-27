@@ -19,6 +19,5 @@ describe_recipe 'terraform::default' do
       .with(:to, File.join(terraform_dir, 'terraform'))
     file(File.join(terraform_dir, 'terraform'))
       .must_exist
-      .with(:mode, '755')
   end
 end
