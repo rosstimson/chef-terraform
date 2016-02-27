@@ -18,6 +18,10 @@
 # limitations under the License.
 #
 
+node.default['terraform']['checksums'] = raw_checksums_to_hash
+node.default['terraform']['checksum'] =
+  node['terraform']['checksums'][node['terraform']['zipfile']]
+
 include_recipe 'ark'
 
 ark 'terraform' do

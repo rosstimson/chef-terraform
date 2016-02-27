@@ -9,6 +9,3 @@ if platform_family?('windows')
   default['terraform']['win_install_dir'] = 'C:\terraform'
   default['terraform']['owner'] = 'Administrator'
 end
-
-default['terraform']['checksums'] = raw_checksums_to_hash
-default['terraform']['checksum'] = node['terraform']['checksums'][node['terraform']['zipfile']]
