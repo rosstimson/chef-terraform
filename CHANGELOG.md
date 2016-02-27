@@ -1,6 +1,11 @@
 terraform Cookbook CHANGELOG
 ============================
 
+0.4.0
+-----
+- Add helper methods: raw_checksums_to_hash, fetch_checksums, terraform_url
+- Fixed Issue #10(https://github.com/rosstimson/chef-terraform/issues/10)
+
 0.3.0
 -----
 - Fixed rubocop offenses

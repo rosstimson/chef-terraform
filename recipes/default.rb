@@ -21,8 +21,7 @@
 include_recipe 'ark'
 
 ark 'terraform' do
-  url "#{node['terraform']['url_base']}/#{node['terraform']['version']}/" \
-    "#{node['terraform']['zipfile']}"
+  url terraform_url
   version node['terraform']['version']
   checksum node['terraform']['checksum']
   has_binaries ['terraform']
