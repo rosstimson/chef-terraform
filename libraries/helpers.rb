@@ -21,8 +21,8 @@ module Terraform
       terraform_releases = "#{uri.scheme}://#{uri.host}/"
       version = node['terraform']['version']
       checksum_file = "terraform_#{version}_SHA256SUMS"
-      Chef::HTTP::Simple.new(terraform_releases)
-        .get("terraform/#{version}/#{checksum_file}")
+      path = "#{uri.path}/#{version}/#{checksum_file}"
+      Chef::HTTP::Simple.new(terraform_releases).get(path)
     end
 
     def terraform_url

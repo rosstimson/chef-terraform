@@ -1,6 +1,12 @@
 terraform Cookbook CHANGELOG
 ============================
 
+0.4.1
+-----
+- cleaned up the fetch_checksums helper method
+- set the default['terraform']['checksums'] and default['terraform']['checksum']
+  attributes in the default recipe
+
 0.4.0
 -----
 - Add helper methods: raw_checksums_to_hash, fetch_checksums, terraform_url
