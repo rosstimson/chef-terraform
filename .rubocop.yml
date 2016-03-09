@@ -5,6 +5,6 @@ AllCops:
 LineLength:
   Max: 99
 
-SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Exclude:
     - metadata.rb
