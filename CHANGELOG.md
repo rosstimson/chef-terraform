@@ -1,6 +1,10 @@
 terraform Cookbook CHANGELOG
 ============================
 
+0.4.2
+-----
+- Remove extraneous slashes from Terraform's SHA256SUMS URL that give 403 Forbidden
+
 0.4.1
 -----
 - cleaned up the fetch_checksums helper method
