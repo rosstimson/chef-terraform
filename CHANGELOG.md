@@ -1,6 +1,12 @@
 terraform Cookbook CHANGELOG
 ============================
 
+0.4.3
+-----
+- Patch a bug introduced by v0.4.2 where the URI.join truncated any path from the URI base.
+  This resulted in GET requests that were missing whatever path was included in the URL base, such
+  as "/terraform"
+
 0.4.2
 -----
 - Remove extraneous slashes from Terraform's SHA256SUMS URL that give 403 Forbidden

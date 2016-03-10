@@ -17,7 +17,9 @@ module Terraform
     # https://releases.hashicorp.com/terraform/#{version}/#{checksum_file}
     def fetch_checksums
       version = node['terraform']['version']
-      uri = URI.join(node['terraform']['url_base'], "#{version}/terraform_#{version}_SHA256SUMS")
+      base = URI.parse(node['terraform']['url_base'])
+      path = "#{base.path}/#{version}/terraform_#{version}_SHA256SUMS"
+      uri = URI.join(node['terraform']['url_base'], path)
       Chef::HTTP::Simple.new("#{uri.scheme}://#{uri.host}").get(uri.path.to_s)
     end
 
