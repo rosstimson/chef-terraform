@@ -23,9 +23,12 @@ module Terraform
       Chef::HTTP::Simple.new("#{uri.scheme}://#{uri.host}").get(uri.path.to_s)
     end
 
+   
+    # See https://coderanger.net/derived-attributes/
+    # for why this is the way it is
     def terraform_url
       "#{node['terraform']['url_base']}/#{node['terraform']['version']}/" \
-        "#{node['terraform']['zipfile']}  % {version: node['version']} "
+        "#{node['terraform']['zipfile']}" % {version: node['terraform']['version']}
     end
 
     private :fetch_checksums
