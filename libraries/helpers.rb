@@ -25,7 +25,7 @@ module Terraform
 
     def terraform_url
       "#{node['terraform']['url_base']}/#{node['terraform']['version']}/" \
-        "#{node['terraform']['zipfile']}"
+        "#{node['terraform']['zipfile']}  % {version: node['version']} "
     end
 
     private :fetch_checksums
