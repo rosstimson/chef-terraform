@@ -1,6 +1,12 @@
 terraform Cookbook CHANGELOG
 ============================
 
+0.4.4
+-----
+- added chefspec tests
+- added more test platforms in Test Kitchen
+- Merged PR #16 that resolves derived attribute issue
+
 0.4.3
 -----
 - Patch a bug introduced by v0.4.2 where the URI.join truncated any path from the URI base.
