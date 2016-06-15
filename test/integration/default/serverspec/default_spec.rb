@@ -7,20 +7,20 @@ describe 'terraform::default' do
     its(:exit_status) { should eq 0 }
     # Discrepancy in version due to a known Terraform issue:
     # https://github.com/hashicorp/terraform/issues/2067
-    its(:stdout) { should match(/Terraform v0\.6\.11/) }
+    its(:stdout) { should match(/Terraform v0\.6\.16/) }
   end
 
-  describe file('/usr/local/terraform-0.6.11') do
+  describe file('/usr/local/terraform-0.6.16') do
     it { should be_owned_by 'root' }
   end
 
   describe file('/usr/local/terraform') do
-    it { should be_linked_to '/usr/local/terraform-0.6.11' }
+    it { should be_linked_to '/usr/local/terraform-0.6.16' }
     it { should be_owned_by 'root' }
   end
 
   describe file('/usr/local/bin/terraform') do
-    it { should be_linked_to '/usr/local/terraform-0.6.11/terraform' }
+    it { should be_linked_to '/usr/local/terraform-0.6.16/terraform' }
     it { should be_owned_by 'root' }
     it { should be_executable }
   end
