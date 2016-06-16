@@ -8,7 +8,6 @@ describe_recipe 'terraform::default' do
     terraform_dir = "/usr/local/terraform-#{node['terraform']['version']}"
     directory(terraform_dir)
       .must_exist
-      .with(:mode, '755')
       .and(:owner, 'root')
       .and(:group, 'root')
     link('/usr/local/terraform')
