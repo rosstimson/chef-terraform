@@ -8,10 +8,10 @@ describe 'terraform::default' do
       ChefSpec::ServerRunner.new do |node, server|
         allow(Chef::Recipe).to receive(:raw_checksums_to_hash).and_call_original
         allow(Chef::Recipe).to receive(:platform_family?).and_return('ubuntu')
-        node.set['terraform']['version'] = '0.6.11'
-        node.set['terraform']['zipfile'] = 'terraform_0.6.11_linux_amd64.zip'
+        node.set['terraform']['version'] = '0.6.16'
+        node.set['terraform']['zipfile'] = 'terraform_0.6.16_linux_amd64.zip'
         node.set['terraform']['checksum'] = \
-          'f451411db521fc4d22c9fe0c80105cf028eb8df0639bac7c1e781880353d9a5f'
+          'e10987bca7ec15301bc2fd152795d51cfc9fdbe6c70c9708e6e2ed81eaa1f082'
       end.converge(described_recipe)
     end
 
@@ -21,9 +21,9 @@ describe 'terraform::default' do
 
     it 'installed terraform' do
       expect(ubuntu_run).to install_ark('terraform').with(
-        version: '0.6.11',
+        version: '0.6.16',
         checksum: \
-          'f451411db521fc4d22c9fe0c80105cf028eb8df0639bac7c1e781880353d9a5f',
+          'e10987bca7ec15301bc2fd152795d51cfc9fdbe6c70c9708e6e2ed81eaa1f082',
         has_binaries: ['terraform'],
         append_env_path: false,
         strip_components: 0
@@ -37,19 +37,19 @@ describe 'terraform::default' do
                                   version: '2012R2') do |node, server|
         allow(Chef::Recipe).to receive(:raw_checksums_to_hash).and_call_original
         allow(Chef::Recipe).to receive(:platform_family?).and_return('windows')
-        node.set['terraform']['version'] = '0.6.11'
-        node.set['terraform']['zipfile'] = 'terraform_0.6.11_windows_amd64.zip'
+        node.set['terraform']['version'] = '0.6.16'
+        node.set['terraform']['zipfile'] = 'terraform_0.6.16_windows_amd64.zip'
         node.set['terraform']['checksum'] = \
-          '4832e6ca2b60bb3d08ef69497bc11890d3e986f0ce76d20bed1a2e9520fc93ba'
+          '6acbc7e7025104d265cbfee982e5e7af0427255fa70bafa5bcbc595b56c6cce7'
         node.set['terraform']['win_install_dir'] = 'C:\terraform'
       end.converge(described_recipe)
     end
 
     it 'installed terraform' do
       expect(win_run).to install_ark('terraform').with(
-        version: '0.6.11',
+        version: '0.6.16',
         checksum: \
-          '4832e6ca2b60bb3d08ef69497bc11890d3e986f0ce76d20bed1a2e9520fc93ba',
+          '6acbc7e7025104d265cbfee982e5e7af0427255fa70bafa5bcbc595b56c6cce7',
         has_binaries: ['terraform'],
         append_env_path: false,
         strip_components: 0,
