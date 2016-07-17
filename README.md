@@ -80,7 +80,7 @@ normally need to be changed._
       "version": "0.6.16"
     }
   },
-  "override_attribtues": {},
+  "override_attributes": {},
   "run_list": [
     "recipe[terraform]"
   ]
