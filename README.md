@@ -48,7 +48,7 @@ Installs [Terraform][terraform] from official pre-compiled binaries.
 Attributes
 ----------
 
-### `['terraform']['url_base']`
+### `node['terraform']['url_base']`
 
 If you are using an artifact repository, like Nexus, hosted behind your corporate firewall, you must set the default attribute or override attributes in your roles or environments.
 
@@ -119,6 +119,7 @@ cookbook](https://supermarket.getchef.com/cookbooks/packer) by
 
 Author:: [Ross Timson][rosstimson]
 <[ross@rosstimson.com](mailto:ross@rosstimson.com)>
+
 Contributor:: [Dang Nguyen][haidangwa]
 <[haidangwa@gmail.com](mailto:haidangwa@gmail.com)>
 
