@@ -79,7 +79,11 @@ normally need to be changed._
       "url_base": "https://nexus.internal.com/nexus",
       "version": "0.6.16"
     }
-  }
+  },
+  "override_attribtues": {},
+  "run_list": [
+    "recipe[terraform]"
+  ]
 }
 ```
 
