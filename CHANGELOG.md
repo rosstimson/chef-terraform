@@ -1,10 +1,14 @@
 terraform Cookbook CHANGELOG
 ============================
 
+0.5.1
+-----
+- Documentation update
+
 0.5.0
 -----
 - Update terraform to 0.6.16
-- Update ark dependency to 1.1.0
+- Update ark dependency to '~> 1.1.0'
 
 0.4.4
 -----

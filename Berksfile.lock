@@ -1,0 +1,28 @@
+DEPENDENCIES
+  minitest-handler (~> 1.5)
+  terraform
+    path: .
+    metadata: true
+
+GRAPH
+  ark (1.1.0)
+    build-essential (>= 0.0.0)
+    seven_zip (>= 0.0.0)
+    windows (>= 0.0.0)
+  build-essential (6.0.0)
+    compat_resource (>= 12.10)
+    mingw (>= 1.1)
+    seven_zip (>= 0.0.0)
+  chef_handler (1.4.0)
+  compat_resource (12.10.6)
+  mingw (1.2.2)
+    compat_resource (>= 0.0.0)
+    seven_zip (>= 0.0.0)
+  minitest-handler (1.5.0)
+    chef_handler (>= 0.0.0)
+  seven_zip (2.0.1)
+    windows (>= 1.2.2)
+  terraform (0.5.1)
+    ark (~> 1.1.0)
+  windows (1.44.1)
+    chef_handler (>= 0.0.0)

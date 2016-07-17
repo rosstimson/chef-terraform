@@ -5,15 +5,14 @@
 .*.sw[a-z]
 *.un~
 pkg/
+.chef
 
 # Berkshelf
 .vagrant
 /cookbooks
-Berksfile.lock
 berks-cookbooks/
 
 # Bundler
-Gemfile.lock
 bin/*
 .bundle/*
 

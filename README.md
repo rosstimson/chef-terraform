@@ -36,7 +36,7 @@ Usage
 -----
 
 Simply include `recipe[terraform]` in your run_list to have
-[Terraform][terraform] installed.
+[Terraform][terraform] installed. If you are using an artifact repository, like Nexus, hosted behind your corporate firewall, you must set the default attribute or override attributes in your roles or environments. The attributes are detailed velow.
 
 Recipes
 -------
@@ -48,17 +48,41 @@ Installs [Terraform][terraform] from official pre-compiled binaries.
 Attributes
 ----------
 
-### version
+### `node['terraform']['url_base']`
 
-The version of [Terraform][terraform] that will be installed.
+If you are using an artifact repository, like Nexus, hosted behind your corporate firewall, you must set the default attribute or override attributes in your roles or environments.
 
-### raw_checksums
+Default: https://releases.hashicorp.com/terraform
 
-sha256 checksums for the intended version's archive file, used for security and
-should be changed alongside version.
+
+### `node['terraform']['version']`
+
+The version of [Terraform][terraform] that will be installed (Default: 0.6.16)
+
+### `node['terraform']['checksum']`
+
+_As of v0.4.1, checksums are processed dynamically. There is no longer a need to specify the sha256 checksums of each terraform package in a cookbook attribute manually_
 
 _NOTE: All other attributes are considered internal and shouldn't
 normally need to be changed._
+
+
+#### Example setting default_attributes in a role (JSON file):
+
+```json
+{
+  "name": "terraform_workstation",
+  "description": "Role to apply onto a terraform workstation",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "terraform": {
+      "url_base": "https://nexus.internal.com/nexus",
+      "version": "0.6.16"
+    }
+  }
+}
+```
+
 
 Development
 -----------
@@ -96,6 +120,9 @@ cookbook](https://supermarket.getchef.com/cookbooks/packer) by
 Author:: [Ross Timson][rosstimson]
 <[ross@rosstimson.com](mailto:ross@rosstimson.com)>
 
+Contributor:: [Dang Nguyen][haidangwa]
+<[haidangwa@gmail.com](mailto:haidangwa@gmail.com)>
+
 Copyright 2014, Ross Timson
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -112,10 +139,11 @@ limitations under the License.
 
 
 [rosstimson]:         https://github.com/rosstimson
+[haidangwa]:          https://github.com/haidangwa
 [repo]:               https://github.com/rosstimson/chef-terraform
 [issues]:             https://github.com/rosstimson/chef-terraform/issues
 [terraform]:          http://www.terraform.io
-[chefsepc]:           https://github.com/sethvargo/chefspec
+[chefspec]:           https://github.com/sethvargo/chefspec
 [foodcritic]:         https://github.com/acrmp/foodcritic
 [rubocop]:            https://github.com/bbatsov/rubocop
 [serverspec]:         https://github.com/serverspec/serverspec
