@@ -12,4 +12,6 @@ group :integration do
   gem 'test-kitchen', '~> 1.4'
   gem 'kitchen-vagrant'
   gem 'serverspec'
+  gem 'winrm', '~> 1.6'
+  gem 'winrm-fs', '~> 0.4.1'
 end

@@ -57,7 +57,7 @@ Default: https://releases.hashicorp.com/terraform
 
 ### `node['terraform']['version']`
 
-The version of [Terraform][terraform] that will be installed (Default: 0.6.16)
+The version of [Terraform][terraform] that will be installed (Default: 0.7.0)
 
 ### `node['terraform']['checksum']`
 
@@ -77,7 +77,7 @@ normally need to be changed._
   "default_attributes": {
     "terraform": {
       "url_base": "https://nexus.internal.com/nexus",
-      "version": "0.6.16"
+      "version": "0.7.0"
     }
   },
   "override_attributes": {},

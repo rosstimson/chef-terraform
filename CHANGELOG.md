@@ -1,6 +1,10 @@
 terraform Cookbook CHANGELOG
 ============================
 
+0.6.0
+-----
+- Update terraform to 0.7.0
+
 0.5.1
 -----
 - Documentation update
