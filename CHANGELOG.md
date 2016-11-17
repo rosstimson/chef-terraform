@@ -1,6 +1,10 @@
 terraform Cookbook CHANGELOG
 ============================
 
+0.5.2
+-----
+- no code changes: merged https://github.com/rosstimson/chef-terraform/pull/22
+
 0.5.1
 -----
 - Documentation update
