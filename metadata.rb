@@ -12,3 +12,6 @@ depends          'ark', '~> 1.1.0'
 %w( centos debian fedora ubuntu windows ).each do |os|
   supports os
 end
+
+source_url 'https://github.com/rosstimson/chef-terraform'
+issues_url 'https://github.com/rosstimson/chef-terraform/issues'
