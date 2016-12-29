@@ -21,8 +21,7 @@
 include_recipe "#{cookbook_name}::gpgme"
 
 unless sig_verified?
-  msg = "terraform_#{node['terraform']['version']}_SHA256SUMS file cannot be " \
-    'trusted: gpg signature rejected'
+  msg = "#{checksums_file} file cannot be trusted: gpg signature rejected"
   Chef::Log.error msg
   raise
 end

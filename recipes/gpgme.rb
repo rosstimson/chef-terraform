@@ -22,8 +22,27 @@ require 'tmpdir'
 node.default['build-essential']['compile_time'] = true
 include_recipe 'build-essential'
 
+# deploy the hashicorp public key onto the target node
 cookbook_file File.join(Dir.tmpdir, 'hashicorp.asc') do
   mode 644
+  action :nothing
+end.run_action(:create)
+
+# download the signature file from Hashicorp
+remote_file sigfile do
+  path File.join(Dir.tmpdir, sigfile)
+  source "#{node['terraform']['url_base']}/#{node['terraform']['version']}/" +
+         sigfile
+  mode '644'
+  action :nothing
+end.run_action(:create)
+
+# download the checksums file
+remote_file checksums_file do
+  path File.join(Dir.tmpdir, checksums_file)
+  source "#{node['terraform']['url_base']}/#{node['terraform']['version']}/" +
+         checksums_file
+  mode '644'
   action :nothing
 end.run_action(:create)
 
