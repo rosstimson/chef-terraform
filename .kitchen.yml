@@ -14,9 +14,15 @@ platforms:
   - name: centos-6.7
   - name: fedora-21
   - name: windows-2012r2
+    driver_config:
+      box: WindowsServ2012R2
 
 suites:
   - name: default
     run_list:
       - recipe[minitest-handler]
       - recipe[terraform::default]
+  - name: gpgme
+    run_list:
+      - recipe[minitest-handler]
+      - recipe[terraform::gpgme]
