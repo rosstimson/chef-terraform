@@ -6,7 +6,7 @@ terraform Cookbook CHANGELOG
 - update ark dependency: ~> 2.0 (Now requires Chef 12.5+)
 - update bundler gems
 - added winrm transport gems: requires vagrant-winrm Vagrant plugin. Please install this plugin with: `vagrant plugin install vagrant-winrm'
-- Set default terraform version to 0.8.0
+- Set default terraform version to 0.8.2
 - Added recipe: terraform::gpgme to install gpgme
 - Added helper method, `#sig_verified?` that will verify the gpg signature
   of the checksum file and abort if the signature is rejected.
