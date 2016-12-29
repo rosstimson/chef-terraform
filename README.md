@@ -27,6 +27,7 @@ The following platforms are supported and have been automatically tested under
 * Fedora 20
 * FreeBSD 10
 * Ubuntu 14.04
+* Windows Server 2012 R2
 
 Other versions of these OSs should work. Alternative Debian and RHEL
 family distributions are also assumed to work. Please [report][issues]
@@ -44,6 +45,12 @@ Recipes
 ### default
 
 Installs [Terraform][terraform] from official pre-compiled binaries.
+
+
+### gpgme
+
+Installs [ruby-gpgme] gem
+
 
 Attributes
 ----------
@@ -63,6 +70,8 @@ The version of [Terraform][terraform] that will be installed (Default: 0.6.16)
 
 _As of v0.4.1, checksums are processed dynamically. There is no longer a need to specify the sha256 checksums of each terraform package in a cookbook attribute manually_
 
+_As of v1.0.0, the checksum file will have its gpg signature verified. If the gpg signature is rejected, the chef run will fail.
+
 _NOTE: All other attributes are considered internal and shouldn't
 normally need to be changed._
 
@@ -77,7 +86,7 @@ normally need to be changed._
   "default_attributes": {
     "terraform": {
       "url_base": "https://nexus.internal.com/nexus",
-      "version": "0.6.16"
+      "version": "0.8.2"
     }
   },
   "override_attributes": {},
@@ -152,3 +161,4 @@ limitations under the License.
 [rubocop]:            https://github.com/bbatsov/rubocop
 [serverspec]:         https://github.com/serverspec/serverspec
 [testkitchen]:        https://github.com/test-kitchen/test-kitchen
+[ruby-gpgme]:         https://github.com/ueno/ruby-gpgme
