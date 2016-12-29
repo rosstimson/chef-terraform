@@ -12,22 +12,20 @@ Requirements
 
 ### Cookbooks
 
-The only dependency this cookbook has is the [ark
-cookbook](https://supermarket.getchef.com/cookbooks/ark).
+This cookbook depends on the [ark cookbook](https://supermarket.getchef.com/cookbooks/ark)
+and [build-essential](https://supermarket.chef.io/cookbooks/build-essential).
 
 ### Platforms
 
-The following platforms are supported and have been automatically tested under
+The following platforms are supported and have been tested under
 [Test Kitchen][testkitchen]:
 
 * Amazon Linux (2014.03.2-hvm)
-* CentOS 6.5
-* CentOS 7
-* Debian 7.6
-* Fedora 20
-* FreeBSD 10
+* CentOS 6.7
+* CentOS 7.2
+* Fedora 21
 * Ubuntu 14.04
-* Windows Server 2012 R2
+* Ubuntu 16.04
 
 Other versions of these OSs should work. Alternative Debian and RHEL
 family distributions are also assumed to work. Please [report][issues]
