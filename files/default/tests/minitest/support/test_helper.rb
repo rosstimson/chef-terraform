@@ -14,5 +14,8 @@ module ChefTerraform
     include MiniTest::Chef::Assertions
     include MiniTest::Chef::Context
     include MiniTest::Chef::Resources
+    include Terraform::Helpers
+    MiniTest::Chef::Resources.register_resource(:gem_package)
+    MiniTest::Chef::Resources.register_resource(:chef_gem)
   end
 end
