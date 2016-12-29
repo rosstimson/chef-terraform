@@ -18,6 +18,14 @@
 # limitations under the License.
 #
 
+include_recipe "#{cookbook_name}::gpgme"
+
+unless sig_verified?
+  msg = "terraform_#{node['terraform']['version']}_SHA256SUMS file cannot be " \
+    'trusted: gpg signature rejected'
+  Chef::Log.error msg
+  raise
+end
 node.default['terraform']['checksums'] = raw_checksums_to_hash
 node.default['terraform']['checksum'] =
   node['terraform']['checksums'][node['terraform']['zipfile']]

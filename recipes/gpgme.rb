@@ -17,10 +17,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+require 'tmpdir'
 
 node.default['build-essential']['compile_time'] = true
 include_recipe 'build-essential'
 
+cookbook_file File.join(Dir.tmpdir, 'hashicorp.asc') do
+  mode 644
+  action :nothing
+end.run_action(:create)
+
 chef_gem 'gpgme' do
   compile_time true if respond_to?(:compile_time)
 end
+
+require 'gpgme'
+import_gpg_key
