@@ -36,7 +36,7 @@ include_recipe 'ark'
 
 ark 'terraform' do
   url terraform_url
-  version node['terraform']['version']
+  version @version
   checksum node['terraform']['checksum']
   has_binaries ['terraform']
   append_env_path false
