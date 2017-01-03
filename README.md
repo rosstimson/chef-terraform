@@ -62,7 +62,7 @@ Default: https://releases.hashicorp.com/terraform
 
 ### `node['terraform']['version']`
 
-The version of [Terraform][terraform] that will be installed (Default: 0.6.16)
+The version of [Terraform][terraform] that will be installed (Default: 0.8.2)
 
 ### `node['terraform']['checksum']`
 
