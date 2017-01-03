@@ -1,12 +1,1 @@
 inherit_from: .rubocop_todo.yml
-
-AllCops:
-  Exclude:
-    - 'bin/*'
-
-LineLength:
-  Max: 99
-
-Style/SpaceBeforeFirstArg:
-  Exclude:
-    - metadata.rb
