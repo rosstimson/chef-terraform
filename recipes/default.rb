@@ -36,7 +36,7 @@ include_recipe 'ark'
 
 ark 'terraform' do
   url terraform_url
-  version @version
+  version node['terraform']['version']
   checksum node['terraform']['checksum']
   has_binaries ['terraform']
   append_env_path false
@@ -51,7 +51,10 @@ ark 'terraform' do
 end
 
 # update path
-windows_path node['terraform']['win_install_dir'] do
+windows_path 'Windows install directory' do
+  unless node['terraform']['win_install_dir'].nil?
+    path node['terraform']['win_install_dir']
+  end
   action :add
   only_if { platform_family?('windows') }
 end
