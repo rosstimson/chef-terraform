@@ -5,14 +5,6 @@ require 'tmpdir'
 module Terraform
   # Helpers belonging to the Terraform namespace
   module Helpers
-    attr_accessor :base
-    attr_accessor :version
-
-    def initialize
-      @base = URI.parse(node['terraform']['url_base'])
-      @version = node['terraform']['version']
-    end
-
     # Transform raw output of the checksum list into a Hash[filename, checksum].
     def raw_checksums_to_hash
       raw_checksums = File.open(checksums_file_path, 'r').read
@@ -68,7 +60,9 @@ module Terraform
     # See https://coderanger.net/derived-attributes/
     # for why this is the way it is
     def terraform_url
-      "#{@base}/#{@version}/#{node['terraform']['zipfile']}"
+      base = URI.parse(node['terraform']['url_base'])
+      version = node['terraform']['version']
+      "#{base}/#{version}/#{node['terraform']['zipfile']}"
     end
   end
 end

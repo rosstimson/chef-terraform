@@ -33,7 +33,7 @@ end.run_action(:create)
 [sigfile, checksums_file].each do |file|
   remote_file file do
     path File.join(Dir.tmpdir, file)
-    source "#{@base}/#{@version}/#{file}"
+    source "#{File.dirname(terraform_url)}/#{file}"
     mode '644'
     action :nothing
   end.run_action(:create)
