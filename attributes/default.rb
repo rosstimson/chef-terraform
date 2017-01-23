@@ -9,8 +9,6 @@ default['terraform']['arch'] = if node['kernel']['machine'] =~ /x86_64/
 default['terraform']['zipfile'] = "terraform_#{node['terraform']['version']}_" \
   "#{node['os']}_#{node['terraform']['arch']}.zip"
 
-# Windows attribute
-if platform_family?('windows')
-  default['terraform']['win_install_dir'] = 'C:\terraform'
-  default['terraform']['owner'] = 'Administrator'
-end
+# Windows attributes
+default['terraform']['win_install_dir'] = 'C:\terraform'
+default['terraform']['owner'] = 'Administrator'
