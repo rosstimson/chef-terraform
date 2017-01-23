@@ -51,8 +51,7 @@ ark 'terraform' do
 end
 
 # update path
-if platform_family?('windows')
-  windows_path node['terraform']['win_install_dir'] do
-    action :add
-  end
+windows_path node['terraform']['win_install_dir'] do
+  action :add
+  only_if { platform_family?('windows') }
 end
