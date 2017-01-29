@@ -60,11 +60,11 @@ module Terraform
     # See https://coderanger.net/derived-attributes/
     # for why this is the way it is
     def terraform_url
-      base = URI.parse(node['terraform']['url_base'])
       version = node['terraform']['version']
-      zipfile = "terraform_#{node['terraform']['version']}_" \
+      base = URI.parse(node['terraform']['url_base']+"/#{version}")
+      zipfile = "terraform_#{version}_" \
                 "#{node['os']}_#{node['terraform']['arch']}.zip"
-      "#{base}/#{version}/#{node['terraform']['zipfile']}"
+      "#{base}/#{zipfile}"
     end
   end
 end
