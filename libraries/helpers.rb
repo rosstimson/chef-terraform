@@ -62,6 +62,8 @@ module Terraform
     def terraform_url
       base = URI.parse(node['terraform']['url_base'])
       version = node['terraform']['version']
+      zipfile = "terraform_#{node['terraform']['version']}_" \
+                "#{node['os']}_#{node['terraform']['arch']}.zip"
       "#{base}/#{version}/#{node['terraform']['zipfile']}"
     end
   end
