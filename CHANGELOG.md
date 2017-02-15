@@ -4,6 +4,10 @@ terraform Cookbook CHANGELOG
 1.0.1
 -----
 - update to handle new host folder structure at terraform
+- updated to use fedora-25 image during testing
+- updated to use debian 8.6 image during testing
+- updated to use ubuntu 15.10 image (in addition to 14.04 and 16.04) during testing
+- use chef_gem assertion of gpgme gem in minitest instead of gem_package
 
 1.0.0
 -----

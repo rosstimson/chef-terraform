@@ -11,8 +11,8 @@ depends 'ark', '~> 2.0'
 depends 'build-essential', '~> 7.0'
 
 supports 'centos', '> 6.0'
-supports 'redhat', '> 6.0'
 supports 'debian', '> 7.0'
+supports 'redhat', '> 6.0'
 supports 'ubuntu', '>= 14.04'
 supports 'windows', '>= 6.3'
 

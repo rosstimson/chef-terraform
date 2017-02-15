@@ -12,6 +12,6 @@ describe_recipe 'terraform::gpgme' do
   end
 
   it 'installed gpgme gem' do
-    gem_package('gpgme').must_be_installed
+    chef_gem('gpgme').must_be_installed
   end
 end

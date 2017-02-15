@@ -4,7 +4,7 @@ describe_recipe 'terraform::default' do
   include ChefTerraform::TestHelper
 
   it 'installed terraform' do
-    skip 'not tested under Windows' if node['platform_family'] == 'windows'
+    skip 'not tested under Windows' if platform_family?('windows')
     terraform_dir = "/usr/local/terraform-#{node['terraform']['version']}"
     directory(terraform_dir)
       .must_exist
