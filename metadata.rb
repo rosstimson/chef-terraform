@@ -14,7 +14,6 @@ supports 'centos', '> 6.0'
 supports 'debian', '> 7.0'
 supports 'redhat', '> 6.0'
 supports 'ubuntu', '>= 14.04'
-supports 'windows', '>= 6.3'
 
 source_url 'https://github.com/rosstimson/chef-terraform'
 issues_url 'https://github.com/rosstimson/chef-terraform/issues'
