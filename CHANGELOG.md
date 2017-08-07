@@ -1,6 +1,10 @@
 terraform Cookbook CHANGELOG
 ============================
 
+1.0.2
+-----
+- (Grasshopper): updated build-essential version dependency
+
 1.0.1
 -----
 - update to handle new host folder structure at terraform
