@@ -5,10 +5,10 @@ maintainer_email 'ross@rosstimson.com'
 license          'Apache 2.0'
 description      'Installs Terraform (terraform.io)'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.0.1'
+version          '1.0.2'
 
 depends 'ark', '~> 2.0'
-depends 'build-essential', '~> 7.0'
+depends 'build-essential', '~> 8.0'
 
 supports 'centos', '> 6.0'
 supports 'debian', '> 7.0'
