@@ -1,4 +1,6 @@
-# Encoding: utf-8
+
+# frozen_string_literal: true
+
 require 'rspec/expectations'
 require 'chefspec'
 require 'chefspec/berkshelf'

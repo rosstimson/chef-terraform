@@ -1,6 +1,29 @@
 terraform Cookbook CHANGELOG
 ============================
 
+2.0.0
+-----
+- Now requires Chef 13 or newer
+- Use vagrant images hosted at https://app.vagrantup.com/bento
+- Added testing with Chef 13 and 14
+- Ported minitests to Inspec
+- Changed default terraform version to 0.11.7
+
+1.0.2
+-----
+- (Grasshopper): updated build-essential version dependency
+
+1.0.1
+-----
+- update to handle new host folder structure at terraform
+- updated to use fedora-25 image during testing
+- updated to use debian 8.6 image during testing
+- replaced ubuntu 16.04 vagrant image with ubuntu 16.10 image
+- added ubuntu 15.10 vagrant image
+- use chef_gem assertion of gpgme gem in minitest instead of gem_package
+- removed windows config from Test Kitchen
+- official testing of Windows platform removed (never worked before, anyway)
+
 1.0.0
 -----
 - update ark dependency: ~> 2.0 (Now requires Chef 12.5+)

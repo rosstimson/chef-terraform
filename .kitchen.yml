@@ -1,3 +1,10 @@
+<%
+test_platforms = %w[
+  ubuntu-14.04 ubuntu-15.10 ubuntu-16.10 debian-8.6 centos-7.5 centos-6.9
+  fedora-25]
+
+chef_versions = %w[13 14]
+%>
 ---
 driver:
   name: vagrant
@@ -6,23 +13,25 @@ provisioner:
   name: chef_zero
 
 platforms:
-  - name: ubuntu-14.04
-  - name: ubuntu-16.04
-  - name: debian-8.4
-  - name: debian-7.10
-  - name: centos-7.2
-  - name: centos-6.7
-  - name: fedora-21
-  - name: windows-2012r2
-    driver_config:
-      box: WindowsServ2012R2
+<% test_platforms.each do |plat_ver| %>
+  - name: <%= plat_ver %>
+    driver:
+      box_url: https://app.vagrantup.com/bento/<%= plat_ver %>
+<% end %>
+
+verifier:
+  name: inspec
+  inspec_tests:
+    - test/integration/inspec
 
 suites:
-  - name: default
+<% chef_versions.each do |version| %>
+  - name: default-chef<%= version %>
+    provisioner:
+      product_name: chef
+      product_version: <%= version %>
+      install_strategy: once
     run_list:
-      - recipe[minitest-handler]
       - recipe[terraform::default]
-  - name: gpgme
-    run_list:
-      - recipe[minitest-handler]
       - recipe[terraform::gpgme]
+<% end %>
