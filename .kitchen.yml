@@ -1,8 +1,5 @@
 <%
-test_platforms = %w[
-  ubuntu-14.04 ubuntu-15.10 ubuntu-16.10 debian-8.6 centos-7.5 centos-6.9
-  fedora-25]
-
+test_platforms = %w[ubuntu-18.04 debian-8.6 centos-7.5 centos-6.9 fedora-27]
 chef_versions = %w[13 14]
 %>
 ---

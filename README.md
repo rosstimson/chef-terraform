@@ -25,10 +25,8 @@ The following platforms are supported and have been tested under
 * CentOS 6.9
 * CentOS 7.5
 * Debian 8.6
-* Fedora 25
-* Ubuntu 14.04
-* Ubuntu 15.10
-* Ubuntu 16.10
+* Fedora 27
+* Ubuntu 18.04
 
 Other versions of these OSs should work. Alternative Debian and RHEL
 family distributions are also assumed to work. Please [report][issues]
