@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # These are helper methods that can be used in this cookbook
 # the Terraform namespace
 require 'tmpdir'

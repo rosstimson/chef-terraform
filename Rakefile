@@ -1,4 +1,6 @@
-# Encoding: utf-8
+
+# frozen_string_literal: true
+
 require 'bundler/setup'
 require 'stove/rake_task'
 
@@ -33,7 +35,7 @@ RSpec::Core::RakeTask.new(:spec) do |t, _args|
 end
 
 # The default rake task should just run it all
-task default: %w(style spec integration)
+task default: %w[style spec integration]
 
 begin
   require 'kitchen/rake_tasks'

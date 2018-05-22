@@ -9,6 +9,8 @@ configure entire infrastructure stack as code.
 
 Requirements
 ------------
+### Chef Client
+As of version 2.0.0, this cookbook will require minimum chef-client 13
 
 ### Cookbooks
 
@@ -20,13 +22,11 @@ and [build-essential](https://supermarket.chef.io/cookbooks/build-essential).
 The following platforms are supported and have been tested under
 [Test Kitchen][testkitchen]:
 
-* CentOS 6.7
-* CentOS 7.2
+* CentOS 6.9
+* CentOS 7.5
 * Debian 8.6
-* Fedora 25
-* Ubuntu 14.04
-* Ubuntu 15.10
-* Ubuntu 16.10
+* Fedora 27
+* Ubuntu 18.04
 
 Other versions of these OSs should work. Alternative Debian and RHEL
 family distributions are also assumed to work. Please [report][issues]

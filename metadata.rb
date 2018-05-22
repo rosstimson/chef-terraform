@@ -1,11 +1,13 @@
-# Encoding: utf-8
+
+# frozen_string_literal: true
+
 name             'terraform'
 maintainer       'Ross Timson'
 maintainer_email 'ross@rosstimson.com'
 license          'Apache 2.0'
 description      'Installs Terraform (terraform.io)'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.0.2'
+version          '2.0.0'
 
 depends 'ark', '~> 2.0'
 depends 'build-essential', '~> 8.0'
@@ -17,4 +19,4 @@ supports 'ubuntu', '>= 14.04'
 
 source_url 'https://github.com/rosstimson/chef-terraform'
 issues_url 'https://github.com/rosstimson/chef-terraform/issues'
-chef_version '>= 12.5'
+chef_version '> 13.0'

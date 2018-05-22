@@ -1,6 +1,14 @@
 terraform Cookbook CHANGELOG
 ============================
 
+2.0.0
+-----
+- Now requires Chef 13 or newer
+- Use vagrant images hosted at https://app.vagrantup.com/bento
+- Added testing with Chef 13 and 14
+- Ported minitests to Inspec
+- Changed default terraform version to 0.11.7
+
 1.0.2
 -----
 - (Grasshopper): updated build-essential version dependency
