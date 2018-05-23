@@ -22,8 +22,8 @@
 
 include_recipe "#{cookbook_name}::gpgme"
 
-msg = "#{checksums_file} file cannot be trusted: gpg signature rejected"
-log msg do
+log "#{checksums_file} trust worthiness alert" do
+  message "#{checksums_file} file cannot be trusted: gpg signature rejected"
   level :error
   notifies :delete, "remote_file[#{checksums_file}]"
   not_if { sig_verified? }
