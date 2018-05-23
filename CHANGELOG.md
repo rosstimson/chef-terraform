@@ -1,6 +1,14 @@
 terraform Cookbook CHANGELOG
 ============================
 
+2.0.1
+-----
+- Fixed Debian and centos 7 vagrant test images
+- Fixed [#28](https://github.com/rosstimson/chef-terraform/issues/28)
+  bumped ark dependency to `~> 3.1`
+- Fixed [#29](https://github.com/rosstimson/chef-terraform/issues/29)
+  run GPG-related procedures at converge time instead of compile time
+
 2.0.0
 -----
 - Now requires Chef 13 or newer

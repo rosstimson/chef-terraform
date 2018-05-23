@@ -22,13 +22,11 @@
 
 include_recipe "#{cookbook_name}::gpgme"
 
-unless sig_verified?
-  msg = "#{checksums_file} file cannot be trusted: gpg signature rejected"
-  log msg do
-    level :error
-    notifies :delete, "remote_file[#{checksums_file}]"
-  end
-  raise
+log "#{checksums_file} trust worthiness alert" do
+  message "#{checksums_file} file cannot be trusted: gpg signature rejected"
+  level :error
+  notifies :delete, "remote_file[#{checksums_file}]"
+  not_if { sig_verified? }
 end
 node.default['terraform']['checksums'] = raw_checksums_to_hash
 node.default['terraform']['checksum'] =

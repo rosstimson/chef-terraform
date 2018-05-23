@@ -3,7 +3,7 @@
 require_relative 'spec_helper'
 
 describe 'terraform::default' do
-  let(:terraform_version) { '0.8.2' }
+  let(:terraform_version) { '0.11.7' }
   context 'ubuntu' do
     let(:sha256sum) do
       'a366fd2d7d8908d23acc23ab151fc692615a147f8832971bb43e42995554c652'
@@ -12,7 +12,7 @@ describe 'terraform::default' do
     let(:ubuntu_run) do
       ChefSpec::ServerRunner.new do |node|
         allow(Chef::Recipe).to receive(:raw_checksums_to_hash).and_call_original
-        allow(Chef::Recipe).to receive(:platform_family?).and_return('ubuntu')
+        allow(Chef::Recipe).to receive(:platform_family?).and_return('debian')
         # checksum for linux_amd64
         node.normal['terraform']['checksum'] = sha256sum
       end.converge(described_recipe)
@@ -61,7 +61,8 @@ describe 'terraform::default' do
     end
 
     it 'created windows install dir' do
-      expect(win_run).to add_windows_path('C:\terraform')
+      expect(win_run).to add_windows_path('Windows install directory')
+        .with(path: 'C:\terraform')
     end
   end
 end

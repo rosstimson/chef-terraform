@@ -24,12 +24,14 @@ require 'tmpdir'
 node.default['build-essential']['compile_time'] = true
 include_recipe 'build-essential'
 
+chef_gem 'gpgme'
+
 # deploy the hashicorp public key onto the target node
 cookbook_file 'hashicorp.asc' do
   path File.join(Dir.tmpdir, 'hashicorp.asc')
   mode '644'
-  action :nothing
-end.run_action(:create)
+  notifies :run, 'ruby_block[import_gpg_key]', :immediately
+end
 
 # download the signature file and the raw checksums from Hashicorp
 [sigfile, checksums_file].each do |file|
@@ -37,13 +39,13 @@ end.run_action(:create)
     path File.join(Dir.tmpdir, file)
     source "#{File.dirname(terraform_url)}/#{file}"
     mode '644'
-    action :nothing
-  end.run_action(:create)
+  end
 end
 
-chef_gem 'gpgme' do
-  compile_time true if respond_to?(:compile_time)
+ruby_block 'import_gpg_key' do
+  block do
+    require 'gpgme'
+    import_gpg_key
+  end
+  action :nothing
 end
-
-require 'gpgme'
-import_gpg_key

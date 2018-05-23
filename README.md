@@ -1,8 +1,7 @@
 terraform Cookbook
 ==================
 
-Installs [Terraform][terraform] by Mitchell Hashimoto
-([@mitchellh](https://github.com/mitchellh)).
+Installs [Terraform][terraform] by HashiCorp.
 
 [Terraform][terraform] is an open source tool that allows you to
 configure entire infrastructure stack as code.
@@ -23,14 +22,18 @@ The following platforms are supported and have been tested under
 [Test Kitchen][testkitchen]:
 
 * CentOS 6.9
-* CentOS 7.5
+* CentOS 7.4
 * Debian 8.6
 * Fedora 27
+* Ubuntu 16.04
 * Ubuntu 18.04
 
 Other versions of these OSs should work. Alternative Debian and RHEL
 family distributions are also assumed to work. Please [report][issues]
 any additional platforms you have tested so they can be added.
+
+** Note for Debian 8.4:
+[dayne](https://github.com/dayne) has found that Debian 8.4 can be fixed by doing apt update/upgrade and then it converges. If you are not able to upgrade to Debian 8.6, try this workaround first.
 
 Usage
 -----
@@ -63,7 +66,7 @@ Default: https://releases.hashicorp.com/terraform
 
 ### `node['terraform']['version']`
 
-The version of [Terraform][terraform] that will be installed (Default: 0.8.2)
+The version of [Terraform][terraform] that will be installed (Default: 0.11.7)
 
 ### `node['terraform']['checksum']`
 
@@ -85,7 +88,7 @@ normally need to be changed._
   "default_attributes": {
     "terraform": {
       "url_base": "https://nexus.internal.com/nexus",
-      "version": "0.8.2"
+      "version": "0.11.7"
     }
   },
   "override_attributes": {},
@@ -112,7 +115,7 @@ Critic][foodcritic] and [RuboCop][rubocop] to check for style issues.
 When contributing it would be very helpful if you could run these via
 `bundle exec spec` and `bundle exec style`.
 
-Lastly, there are [Serverspec][serverspec] integration tests for
+Lastly, there are [Inspec][inspec] integration tests for
 use with [Test Kitchen][testkitchen]. To see all of the available
 integration test suites just check `bundle exec rake T` or `bundle exec
 kitchen list`. It would be great if you could run these tests too, you
@@ -158,6 +161,6 @@ limitations under the License.
 [chefspec]:           https://github.com/sethvargo/chefspec
 [foodcritic]:         https://github.com/acrmp/foodcritic
 [rubocop]:            https://github.com/bbatsov/rubocop
-[serverspec]:         https://github.com/serverspec/serverspec
+[inspec]:             https://www.inspec.io/
 [testkitchen]:        https://github.com/test-kitchen/test-kitchen
 [ruby-gpgme]:         https://github.com/ueno/ruby-gpgme
