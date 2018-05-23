@@ -1,5 +1,5 @@
 <%
-test_platforms = %w[ubuntu-18.04 debian-8.6 centos-7.5 centos-6.9 fedora-27]
+test_platforms = %w[ubuntu-18.04 debian-8.10 centos-7.4 centos-6.9 fedora-27]
 chef_versions = %w[13 14]
 %>
 ---
@@ -30,5 +30,4 @@ suites:
       install_strategy: once
     run_list:
       - recipe[terraform::default]
-      - recipe[terraform::gpgme]
 <% end %>
