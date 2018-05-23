@@ -25,6 +25,7 @@ The following platforms are supported and have been tested under
 * CentOS 7.4
 * Debian 8.6
 * Fedora 27
+* Ubuntu 16.04
 * Ubuntu 18.04
 
 Other versions of these OSs should work. Alternative Debian and RHEL

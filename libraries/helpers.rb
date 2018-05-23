@@ -48,21 +48,19 @@ module Terraform
     # verify the sha256sum file's signature
     # @return: Boolean
     def sig_verified?
-      begin
-        checksums = File.open(checksums_file_path, 'r')
-        io = File.open(sigfile_path, 'rb')
-        crypto = ::GPGME::Crypto.new
-        signature = ::GPGME::Data.new(io)
-        crypto.verify(signature, signed_text: checksums) do |sig|
-          return sig.valid? &&
-                 !(sig.expired_signature? || sig.expired_key? ||
-                   sig.revoked_key? || sig.bad? || sig.no_key?)
-        end
-      rescue Errno::ENOENT
-        false
-      ensure
-        false
+      checksums = File.open(checksums_file_path, 'r')
+      io = File.open(sigfile_path, 'rb')
+      crypto = ::GPGME::Crypto.new
+      signature = ::GPGME::Data.new(io)
+      crypto.verify(signature, signed_text: checksums) do |sig|
+        return sig.valid? &&
+               !(sig.expired_signature? || sig.expired_key? ||
+                 sig.revoked_key? || sig.bad? || sig.no_key?)
       end
+    rescue Errno::ENOENT
+      false
+    ensure
+      false
     end
 
     # See https://coderanger.net/derived-attributes/

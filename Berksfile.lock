@@ -2,6 +2,8 @@ DEPENDENCIES
   terraform
     path: .
     metadata: true
+  terraform_test
+    path: test/fixtures/cookbooks/terraform_test
 
 GRAPH
   ark (3.1.0)
@@ -18,4 +20,6 @@ GRAPH
   terraform (2.0.1)
     ark (~> 3.1)
     build-essential (~> 8.0)
+  terraform_test (0.0.1)
+    terraform (>= 0.0.0)
   windows (4.2.2)

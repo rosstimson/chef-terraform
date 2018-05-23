@@ -1,5 +1,7 @@
 <%
-test_platforms = %w[ubuntu-18.04 debian-8.10 centos-7.4 centos-6.9 fedora-27]
+test_platforms = %w[
+  ubuntu-16.04 ubuntu-18.04 debian-8.10 centos-7.4 centos-6.9 fedora-27
+]
 chef_versions = %w[13 14]
 %>
 ---
@@ -29,5 +31,6 @@ suites:
       product_version: <%= version %>
       install_strategy: once
     run_list:
+      - recipe[terraform_test::ubuntu]
       - recipe[terraform::default]
 <% end %>

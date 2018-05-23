@@ -12,7 +12,7 @@ describe 'terraform::default' do
     let(:ubuntu_run) do
       ChefSpec::ServerRunner.new do |node|
         allow(Chef::Recipe).to receive(:raw_checksums_to_hash).and_call_original
-        allow(Chef::Recipe).to receive(:platform_family?).and_return('ubuntu')
+        allow(Chef::Recipe).to receive(:platform_family?).and_return('debian')
         # checksum for linux_amd64
         node.normal['terraform']['checksum'] = sha256sum
       end.converge(described_recipe)
