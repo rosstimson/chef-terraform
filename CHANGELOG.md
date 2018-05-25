@@ -2,7 +2,7 @@ terraform Cookbook CHANGELOG
 ============================
 
 
-2.0.2
+2.1.0
 -----
 - Added CONTRIBUTING.md
 - Added TESTING.md
