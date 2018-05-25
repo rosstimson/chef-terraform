@@ -39,13 +39,7 @@ Relevant File Content:
 ----------------------
 /tmp/kitchen/cache/cookbooks/terraform/recipes/gpgme.rb:
 
- 27:  
- 28:  chef_gem 'gpgme' do
- 29:    compile_time true
- 30:  end
- 31:  
- 32:  require 'gpgme'
- 33:  
+
  34>> gpg_install 'gnupg2 and haveged'
  35:  
 ```
@@ -91,7 +85,7 @@ Installs [Terraform][terraform] from official pre-compiled binaries and gnupg wi
 
 ### gpgme
 
-Installs [ruby-gpgme] gem and gnupg for verification of HashiCorp's signatures. This recipe is included when the default recipe is added to your node's run list.
+Installs gnupg2 and haveged to ensure the checksums file from HashiCorp can be trusted. This recipe is included when the default recipe is added to your node's run list.
 
 
 Attributes
