@@ -10,7 +10,7 @@ terraform Cookbook CHANGELOG
   - `#import_gpg_key`
   - `#key_imported?`
 - `#sig_verified?` aliased to `#signature_trustworthy`
-- ensure gnupg2 is installed
+- ensure gnupg2 is installed using the gpg_install resource from the gpg cookbook
 - Removed gpgme gem dependency
 - Removed explicit build-essential cookbook dependency from metadta
   - ark lists build-essential as a dependency
