@@ -1,8 +1,7 @@
 terraform Cookbook
 ==================
 
-Installs [Terraform][terraform] by Mitchell Hashimoto
-([@mitchellh](https://github.com/mitchellh)).
+Installs [Terraform][terraform] by HashiCorp.
 
 [Terraform][terraform] is an open source tool that allows you to
 configure entire infrastructure stack as code.
@@ -15,7 +14,41 @@ As of version 2.0.0, this cookbook will require minimum chef-client 13
 ### Cookbooks
 
 This cookbook depends on the [ark cookbook](https://supermarket.getchef.com/cookbooks/ark)
-and [build-essential](https://supermarket.chef.io/cookbooks/build-essential).
+to unpackage and install terraform.
+
+** GPG **
+As of this writing (5/24/18), the community gpg cookbook that is released in Supermarket was transferred to the sous-chef group for ownership. However, the features that this cookbook relies on is not yet published. Therefore, if you run this cookbook, be sure to use berkshelf to ensure that the correct cookbook dependencies are uploaded to your chef org.
+
+If you see the error below, it is a result of using the published 0.3.0 version of gpg from supermarket.chef.io and not the github referenced commit.
+
+```
+================================================================================
+Recipe Compile Error in /tmp/kitchen/cache/cookbooks/terraform/recipes/default.rb
+================================================================================
+
+NoMethodError
+-------------
+undefined method `gpg_install' for cookbook: terraform, recipe: gpgme :Chef::Recipe
+
+Cookbook Trace:
+---------------
+  /tmp/kitchen/cache/cookbooks/terraform/recipes/gpgme.rb:34:in `from_file'
+  /tmp/kitchen/cache/cookbooks/terraform/recipes/default.rb:23:in `from_file'
+
+Relevant File Content:
+----------------------
+/tmp/kitchen/cache/cookbooks/terraform/recipes/gpgme.rb:
+
+
+ 34>> gpg_install 'gnupg2 and haveged'
+ 35:  
+```
+
+This cookbook's Berksfile contains this reference to the current version of gpg in github:
+```
+cookbook 'gpg', git: 'https://github.com/sous-chefs/gpg',
+         ref: '2f682a1406047e99351d184fe18fff035a0c856c'
+```
 
 ### Platforms
 
@@ -23,16 +56,18 @@ The following platforms are supported and have been tested under
 [Test Kitchen][testkitchen]:
 
 * CentOS 6.9
-* CentOS 7.5
+* CentOS 7.4
 * Debian 8.6
-* Fedora 25
-* Ubuntu 14.04
-* Ubuntu 15.10
-* Ubuntu 16.10
+* Fedora 27
+* Ubuntu 16.04
+* Ubuntu 18.04
 
 Other versions of these OSs should work. Alternative Debian and RHEL
 family distributions are also assumed to work. Please [report][issues]
 any additional platforms you have tested so they can be added.
+
+** Note for Debian:
+[dayne](https://github.com/dayne) has found that this cookbook may not converge on Debian platforms. This can be fixed by doing running `apt update`, and then it will converge. This workaround has been applied to Test Kitchen by invoking the `terraform_test::ubuntu` recipe.
 
 Usage
 -----
@@ -45,12 +80,12 @@ Recipes
 
 ### default
 
-Installs [Terraform][terraform] from official pre-compiled binaries.
+Installs [Terraform][terraform] from official pre-compiled binaries and gnupg with the gpgme recipe, below.
 
 
 ### gpgme
 
-Installs [ruby-gpgme] gem
+Installs gnupg2 and haveged to ensure the checksums file from HashiCorp can be trusted. This recipe is included when the default recipe is added to your node's run list.
 
 
 Attributes
@@ -65,7 +100,7 @@ Default: https://releases.hashicorp.com/terraform
 
 ### `node['terraform']['version']`
 
-The version of [Terraform][terraform] that will be installed (Default: 0.8.2)
+The version of [Terraform][terraform] that will be installed (Default: 0.11.7)
 
 ### `node['terraform']['checksum']`
 
@@ -87,7 +122,7 @@ normally need to be changed._
   "default_attributes": {
     "terraform": {
       "url_base": "https://nexus.internal.com/nexus",
-      "version": "0.8.2"
+      "version": "0.11.7"
     }
   },
   "override_attributes": {},
@@ -104,23 +139,6 @@ Development
 * Source hosted at [GitHub][repo]
 * Report issues/questions/feature requests on [GitHub Issues][issues]
 
-### Contributing
-
-Pull requests are very welcome! Ideally create a topic branch for every
-separate change you make.
-
-This cookbook uses [ChefSpec][chefspec] for unit tests. I also use [Food
-Critic][foodcritic] and [RuboCop][rubocop] to check for style issues.
-When contributing it would be very helpful if you could run these via
-`bundle exec spec` and `bundle exec style`.
-
-Lastly, there are [Serverspec][serverspec] integration tests for
-use with [Test Kitchen][testkitchen]. To see all of the available
-integration test suites just check `bundle exec rake T` or `bundle exec
-kitchen list`. It would be great if you could run these tests too, you
-may however leave out the Amazon Linux test suite if you do not have
-an AWS account as it runs on an EC2 instance (you will be billed for
-running this).
 
 ### Credit
 
@@ -160,6 +178,6 @@ limitations under the License.
 [chefspec]:           https://github.com/sethvargo/chefspec
 [foodcritic]:         https://github.com/acrmp/foodcritic
 [rubocop]:            https://github.com/bbatsov/rubocop
-[serverspec]:         https://github.com/serverspec/serverspec
+[inspec]:             https://www.inspec.io/
 [testkitchen]:        https://github.com/test-kitchen/test-kitchen
 [ruby-gpgme]:         https://github.com/ueno/ruby-gpgme

@@ -3,12 +3,14 @@
 # These are helper methods that can be used in this cookbook
 # the Terraform namespace
 require 'tmpdir'
+require 'mixlib/shellout'
 
 module Terraform
   # Helpers belonging to the Terraform namespace
   module Helpers
     # Transform raw output of the checksum list into a Hash[filename, checksum].
     def raw_checksums_to_hash
+      return {} unless File.exist?(checksums_file_path)
       raw_checksums = File.open(checksums_file_path, 'r').read
       Hash[
         raw_checksums.split("\n").map do |s|
@@ -33,41 +35,31 @@ module Terraform
       File.join(Dir.tmpdir, checksums_file)
     end
 
-    # import the Hashicorp GPG key
-    def import_gpg_key
-      return if key_imported?
-      keyfile = File.join(Dir.tmpdir, 'hashicorp.asc')
-      GPGME::Key.import(File.open(keyfile))
-    end
-
-    def key_imported?
-      !GPGME::Key.find(:public, 'security@hashicorp.com', :sign).empty?
-    end
-
-    # verify the sha256sum file's signature
+    # verify the sha256sum file's signatures can be trusted
     # @return: Boolean
-    def sig_verified?
-      checksums = File.open(checksums_file_path, 'r')
-      io = File.open(sigfile_path, 'rb')
-      crypto = GPGME::Crypto.new
-      signature = GPGME::Data.new(io)
-      crypto.verify(signature, signed_text: checksums) do |sig|
-        return sig.valid? &&
-               !(sig.expired_signature? || sig.expired_key? ||
-                 sig.revoked_key? || sig.bad? || sig.no_key?)
-      end
-      false
+    def signatures_trustworthy?
+      cmd = 'sudo -u root -i gpg2 --verify ' \
+        "#{sigfile_path} #{checksums_file_path}"
+      gpg_verify = Mixlib::ShellOut.new(cmd)
+      gpg_verify.run_command
+      gpg_verify.exitstatus.zero?
+    end
+
+    def terraform_zipfile
+      node['terraform']['zipfile']
+    end
+
+    def terraform_url_base(version = node['terraform']['version'])
+      URI.parse("#{node['terraform']['url_base']}/#{version}").to_s
     end
 
     # See https://coderanger.net/derived-attributes/
     # for why this is the way it is
     def terraform_url
-      version = node['terraform']['version']
-      base = URI.parse("#{node['terraform']['url_base']}/#{version}")
-      zipfile = "terraform_#{version}_" \
-                "#{node['os']}_#{node['terraform']['arch']}.zip"
-      "#{base}/#{zipfile}"
+      ::File.join(terraform_url_base, terraform_zipfile)
     end
+
+    alias_method 'sig_verified?', 'signatures_trustworthy?'
   end
 end
 

@@ -1,6 +1,30 @@
 terraform Cookbook CHANGELOG
 ============================
 
+
+2.1.0
+-----
+- Added CONTRIBUTING.md
+- Added TESTING.md
+- Removed helper methods obsoleted by gpg cookbook:
+  - `#import_gpg_key`
+  - `#key_imported?`
+- `#sig_verified?` aliased to `#signature_trustworthy`
+- raises an exception if the checksums file signature is invalid
+- ensure gnupg2 is installed using the gpg_install resource from the gpg cookbook
+- Removed gpgme gem dependency
+- Removed explicit build-essential cookbook dependency from metadta
+  - ark lists build-essential as a dependency
+- Expanded chefspec coverage to 100% and added shared_examples
+
+2.0.1
+-----
+- Fixed Debian and centos 7 vagrant test images
+- Fixed [#28](https://github.com/rosstimson/chef-terraform/issues/28)
+  bumped ark dependency to `~> 3.1`
+- Fixed [#29](https://github.com/rosstimson/chef-terraform/issues/29)
+  run GPG-related procedures at converge time instead of compile time
+
 2.0.0
 -----
 - Now requires Chef 13 or newer
