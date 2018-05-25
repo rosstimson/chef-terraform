@@ -26,6 +26,16 @@ log "#{checksums_file} trust worthiness alert" do
   message "#{checksums_file} file cannot be trusted: gpg signature rejected"
   level :error
   notifies :delete, "remote_file[#{checksums_file}]", :immediately
+  notifies :run, 'ruby_block[raise if signature file cannot be trusted]',
+           :immediately
+  not_if { signatures_trustworthy? }
+end
+
+ruby_block 'raise if signature file cannot be trusted' do
+  block do
+    raise "GPG signature of #{checksums_file} not valid"
+  end
+  action :nothing
   not_if { signatures_trustworthy? }
 end
 
@@ -48,7 +58,6 @@ ark 'terraform' do
   end
 
   action :install
-  only_if { signatures_trustworthy? }
 end
 
 # update path

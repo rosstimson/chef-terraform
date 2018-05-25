@@ -10,10 +10,12 @@ terraform Cookbook CHANGELOG
   - `#import_gpg_key`
   - `#key_imported?`
 - `#sig_verified?` aliased to `#signature_trustworthy`
+- raises an exception if the checksums file signature is invalid
 - ensure gnupg2 is installed using the gpg_install resource from the gpg cookbook
 - Removed gpgme gem dependency
 - Removed explicit build-essential cookbook dependency from metadta
   - ark lists build-essential as a dependency
+- Expanded chefspec coverage to 100% and added shared_examples
 
 2.0.1
 -----
