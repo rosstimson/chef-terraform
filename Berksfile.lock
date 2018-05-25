@@ -1,4 +1,8 @@
 DEPENDENCIES
+  gpg
+    git: https://github.com/sous-chefs/gpg
+    revision: 2f682a1406047e99351d184fe18fff035a0c856c
+    ref: 2f682a1
   terraform
     path: .
     metadata: true
@@ -13,13 +17,16 @@ GRAPH
   build-essential (8.1.1)
     mingw (>= 1.1)
     seven_zip (>= 0.0.0)
+  gpg (0.3.0)
+    yum-epel (>= 0.0.0)
   mingw (2.0.2)
     seven_zip (>= 0.0.0)
   seven_zip (3.0.0)
     windows (>= 0.0.0)
-  terraform (2.0.1)
+  terraform (2.1.0)
     ark (~> 3.1)
-    build-essential (~> 8.0)
+    gpg (~> 0.3)
   terraform_test (0.0.1)
     terraform (>= 0.0.0)
   windows (4.2.2)
+  yum-epel (3.1.0)

@@ -21,31 +21,31 @@
 #
 require 'tmpdir'
 
-node.default['build-essential']['compile_time'] = true
-include_recipe 'build-essential'
+# this resource installs haveged for additional entropy
+gpg_install 'gnupg2 and haveged'
 
-chef_gem 'gpgme'
+hashicorp_keyfile = File.join(Dir.tmpdir, 'hashicorp.asc')
 
 # deploy the hashicorp public key onto the target node
 cookbook_file 'hashicorp.asc' do
-  path File.join(Dir.tmpdir, 'hashicorp.asc')
-  mode '644'
-  notifies :run, 'ruby_block[import_gpg_key]', :immediately
+  path hashicorp_keyfile
+  mode '0644'
+  notifies :import, 'gpg_key[import HashiCorp key to root keychain]',
+           :immediately
+end
+
+gpg_key 'import HashiCorp key to root keychain' do
+  user 'root'
+  key_file hashicorp_keyfile
+  name_real 'HashiCorp Security'
+  action :import
 end
 
 # download the signature file and the raw checksums from Hashicorp
 [sigfile, checksums_file].each do |file|
   remote_file file do
     path File.join(Dir.tmpdir, file)
-    source "#{File.dirname(terraform_url)}/#{file}"
-    mode '644'
+    source "#{terraform_url_base}/#{file}"
+    mode '0644'
   end
-end
-
-ruby_block 'import_gpg_key' do
-  block do
-    require 'gpgme'
-    import_gpg_key
-  end
-  action :nothing
 end

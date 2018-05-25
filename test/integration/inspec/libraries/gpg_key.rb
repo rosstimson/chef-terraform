@@ -15,7 +15,7 @@ class GpgKey < Inspec.resource(1)
   end
 
   def imported?
-    keys = inspec.backend.run_command("gpg --list-keys \"#{@key_or_name}\"")
+    keys = inspec.backend.run_command("sudo -u root -i gpg2 --list-keys \"#{@key_or_name}\"")
     keys = keys.stdout.split("\n")
     !keys.empty? && keys.any? { |h| h.match?(/HashiCorp/) }
   end

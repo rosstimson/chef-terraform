@@ -13,8 +13,4 @@ control 'Hashicorp gpg key' do
   describe gpg_signature(terraform_version) do
     it { should be_valid }
   end
-
-  describe gem('gpgme', '/opt/chef/embedded/bin/gem') do
-    it { should be_installed }
-  end
 end

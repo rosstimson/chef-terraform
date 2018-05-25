@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+gpg = 'sudo -u root -i gpg2'
+
 # Custom resource based on the InSpec resource DSL
 class GpgSignature < Inspec.resource(1)
   require 'digest'
@@ -16,11 +18,6 @@ class GpgSignature < Inspec.resource(1)
     @version = terraform_version
   end
 
-  def import_key
-    import = inspec.backend.run_command('gpg --import /tmp/hashicorp.asc')
-    import.exit_status.zero?
-  end
-
   # verify the sha256sum file's signature
   # this method is called by `it { should be_valid }`
   # returns true or false if the gpg signature is valid
@@ -29,13 +26,10 @@ class GpgSignature < Inspec.resource(1)
     sigfile_path = "/tmp/#{checksums_file}.sig"
     checksums_file_path = "/tmp/#{checksums_file}"
 
-    if import_key
-      gpg_verify = inspec.backend.run_command(
-        "gpg --verify #{sigfile_path} #{checksums_file_path}"
-      )
-      return gpg_verify.exit_status.zero?
-    end
-    false
+    gpg_verify = inspec.backend.run_command(
+      "sudo -u root -i gpg2 --verify #{sigfile_path} #{checksums_file_path}"
+    )
+    gpg_verify.exit_status.zero?
   end
 
   def to_s

@@ -1,6 +1,20 @@
 terraform Cookbook CHANGELOG
 ============================
 
+
+2.0.2
+-----
+- Added CONTRIBUTING.md
+- Added TESTING.md
+- Removed helper methods obsoleted by gpg cookbook:
+  - `#import_gpg_key`
+  - `#key_imported?`
+- `#sig_verified?` aliased to `#signature_trustworthy`
+- ensure gnupg2 is installed
+- Removed gpgme gem dependency
+- Removed explicit build-essential cookbook dependency from metadta
+  - ark lists build-essential as a dependency
+
 2.0.1
 -----
 - Fixed Debian and centos 7 vagrant test images

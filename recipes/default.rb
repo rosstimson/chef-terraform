@@ -25,12 +25,12 @@ include_recipe "#{cookbook_name}::gpgme"
 log "#{checksums_file} trust worthiness alert" do
   message "#{checksums_file} file cannot be trusted: gpg signature rejected"
   level :error
-  notifies :delete, "remote_file[#{checksums_file}]"
-  not_if { sig_verified? }
+  notifies :delete, "remote_file[#{checksums_file}]", :immediately
+  not_if { signatures_trustworthy? }
 end
+
 node.default['terraform']['checksums'] = raw_checksums_to_hash
-node.default['terraform']['checksum'] =
-  node['terraform']['checksums'][node['terraform']['zipfile']]
+node.default['terraform']['checksum'] = raw_checksums_to_hash[terraform_zipfile]
 
 include_recipe 'ark'
 
@@ -48,6 +48,7 @@ ark 'terraform' do
   end
 
   action :install
+  only_if { signatures_trustworthy? }
 end
 
 # update path
