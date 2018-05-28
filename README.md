@@ -6,6 +6,10 @@ Installs [Terraform][terraform] by HashiCorp.
 [Terraform][terraform] is an open source tool that allows you to
 configure entire infrastructure stack as code.
 
+### Transfer of Ownership
+As of v2.1.1, the ownership of this cookbook was transferred to [haidangwa]. From this point forward, all issues and pull requests should be submitted at https://github.com/haidangwa/chef-terraform.
+
+
 Requirements
 ------------
 ### Chef Client
@@ -172,8 +176,8 @@ limitations under the License.
 
 [rosstimson]:         https://github.com/rosstimson
 [haidangwa]:          https://github.com/haidangwa
-[repo]:               https://github.com/rosstimson/chef-terraform
-[issues]:             https://github.com/rosstimson/chef-terraform/issues
+[repo]:               https://github.com/haidangwa/chef-terraform
+[issues]:             https://github.com/haidangwa/chef-terraform/issues
 [terraform]:          http://www.terraform.io
 [chefspec]:           https://github.com/sethvargo/chefspec
 [foodcritic]:         https://github.com/acrmp/foodcritic

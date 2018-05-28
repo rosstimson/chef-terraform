@@ -2,6 +2,11 @@ terraform Cookbook CHANGELOG
 ============================
 
 
+2.1.1
+-----
+No code change - only updating cookbook ownership information.
+
+
 2.1.0
 -----
 - Added CONTRIBUTING.md
